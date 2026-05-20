@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Vicky Technology | Full-Stack & Data Analytics Courses</title>
+  <!-- Google Fonts & Simple Reset -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f8fafc;
+      color: #0f172a;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* header / navbar */
+    .navbar {
+      background: white;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.02), 0 1px 2px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(0px);
+      background: rgba(255,255,255,0.96);
+    }
+    .nav-flex {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 1rem 0;
+    }
+    .logo h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #0f2b3d, #1e4a76);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .logo span {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #2c7da0;
+      display: block;
+      letter-spacing: normal;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #1e293b;
+      transition: 0.2s;
+    }
+    .nav-links a:hover {
+      color: #2c7da0;
+    }
+    /* hero */
+    .hero {
+      background: linear-gradient(120deg, #eef2ff 0%, #ffffff 100%);
+      padding: 3.5rem 0 3rem;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .hero-grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .hero-text {
+      flex: 1.2;
+    }
+    .hero-text h2 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      background: linear-gradient(to right, #0f172a, #2c7da0);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .hero-text p {
+      font-size: 1.2rem;
+      color: #334155;
+      max-width: 550px;
+      margin-bottom: 1.8rem;
+    }
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-block;
+      background: #1e4a76;
+      color: white;
+      font-weight: 600;
+      padding: 0.75rem 1.8rem;
+      border-radius: 40px;
+      text-decoration: none;
+      transition: 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid #1e4a76;
+      color: #1e4a76;
+    }
+    .btn-outline:hover {
+      background: #1e4a76;
+      color: white;
+    }
+    .btn:hover {
+      background: #0f3b5c;
+      transform: translateY(-2px);
+    }
+    .hero-stats {
+      flex: 0.8;
+      background: white;
+      border-radius: 2rem;
+      padding: 1.5rem;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .hero-stats h3 {
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    /* course cards section */
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin: 2.5rem 0 1rem;
+      color: #0f172a;
+    }
+    .section-sub {
+      text-align: center;
+      color: #475569;
+      margin-bottom: 2.5rem;
+    }
+    .courses-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin-bottom: 3rem;
+    }
+    .course-card {
+      background: white;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      box-shadow: 0 12px 28px -8px rgba(0,0,0,0.08);
+      flex: 1;
+      min-width: 280px;
+      max-width: 380px;
+      transition: all 0.25s ease;
+      border: 1px solid #eef2ff;
+    }
+    .course-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 24px 36px -12px rgba(0,0,0,0.15);
+    }
+    .course-badge {
+      background: #eef2ff;
+      padding: 0.5rem 1rem;
+      display: inline-block;
+      font-weight: 600;
+      font-size: 0.8rem;
+      border-radius: 30px;
+      margin: 1.2rem 1.2rem 0;
+      color: #1e4a76;
+    }
+    .course-card h3 {
+      font-size: 1.7rem;
+      margin: 0.8rem 1.2rem 0.5rem;
+      font-weight: 700;
+    }
+    .price {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: #0f2b3d;
+      margin: 0.5rem 1.2rem;
+    }
+    .price span {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #475569;
+    }
+    .instructor {
+      margin: 0.5rem 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #334155;
+      font-weight: 500;
+      border-top: 1px solid #eef2ff;
+      padding-top: 0.8rem;
+    }
+    .instructor-icon {
+      background: #e2e8f0;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+    .company-exp {
+      font-size: 0.85rem;
+      color: #4b5563;
+      margin: 0.2rem 1.2rem 1rem;
+      line-height: 1.4;
+    }
+    .enroll-btn {
+      display: block;
+      background: #0f172a;
+      color: white;
+      text-align: center;
+      margin: 1rem 1.2rem 1.5rem;
+      padding: 0.7rem;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+    .enroll-btn:hover {
+      background: #2c7da0;
+    }
+
+    /* instructor highlight / about section merged with team */
+    .about-instructor {
+      background: linear-gradient(135deg, #f1f5f9 0%, #ffffff 100%);
+      border-radius: 2rem;
+      padding: 2rem 2rem;
+      margin: 3rem 0;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.02);
+      border: 1px solid #e9edf2;
+    }
+    .about-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+    }
+    .about-text {
+      flex: 1.5;
+    }
+    .about-text h2 {
+      font-size: 1.8rem;
+      margin-bottom: 0.75rem;
+    }
+    .about-text p {
+      margin-bottom: 1rem;
+      color: #2d3a4b;
+    }
+    .highlight-name {
+      font-weight: 800;
+      color: #0f2b3d;
+    }
+    .ex-list {
+      list-style: none;
+      margin: 1rem 0;
+    }
+    .ex-list li {
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .badge-tag {
+      background: #e2e8f0;
+      padding: 0.2rem 0.7rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+    .instructor-photo {
+      flex: 0.8;
+      background: #cbd5e1;
+      background: linear-gradient(145deg, #bfd9f0, #e9f0fa);
+      border-radius: 2rem;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .avatar-icon {
+      font-size: 5rem;
+    }
+
+    /* home about extra info */
+    .home-about {
+      margin: 2rem 0;
+      text-align: center;
+      background: #ffffffdd;
+      padding: 2rem;
+      border-radius: 2rem;
+      background: white;
+      box-shadow: 0 5px 12px rgba(0,0,0,0.03);
+    }
+
+    /* footer section */
+    .footer {
+      background: #0a1927;
+      color: #cbd5e1;
+      margin-top: 3rem;
+      padding: 3rem 0 1.5rem;
+      border-top-left-radius: 2rem;
+      border-top-right-radius: 2rem;
+    }
+    .footer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    .footer-col h3 {
+      color: white;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+    .footer-col p, .footer-col a {
+      color: #94a3b8;
+      text-decoration: none;
+      line-height: 1.6;
+    }
+    .footer-col a:hover {
+      color: #ffffff;
+    }
+    .copyright {
+      text-align: center;
+      padding-top: 1.5rem;
+      border-top: 1px solid #1e3a3a;
+      font-size: 0.85rem;
+    }
+    @media (max-width: 760px) {
+      .nav-flex {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .hero-text h2 {
+        font-size: 2rem;
+      }
+      .container {
+        padding: 0 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container nav-flex">
+    <div class="logo">
+      <h1>Vicky Technology</h1>
+      <span>Future-ready skill mastery</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#courses">Courses</a></li>
+      <li><a href="#about-section">About</a></li>
+      <li><a href="#footer">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero section -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-text">
+      <h2>Upskill for the digital era<br>with industry experts</h2>
+      <p>Master Full-Stack Development or Data Analytics with real-world projects, live mentoring, and career support.</p>
+      <div class="btn-group">
+        <a href="#courses" class="btn">Explore Courses</a>
+        <a href="#about-section" class="btn btn-outline">Meet Instructors</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <h3>⭐ 4.9/5 Rating</h3>
+      <p>2,500+ professionals trained</p>
+      <p>📅 Live & self-paced options</p>
+      <p>🎓 Certification + Placement Assistance</p>
+    </div>
+  </div>
+</section>
+
+<div class="container" id="courses">
+  <h2 class="section-title">Premium Career Tracks</h2>
+  <p class="section-sub">Choose your path — each course is ₹15,000 only, crafted by top industry mentors</p>
+  
+  <div class="courses-grid">
+    <!-- Fullstack Course Card -->
+    <div class="course-card">
+      <div class="course-badge">🔥 Most In-Demand</div>
+      <h3>Full-Stack Development</h3>
+      <div class="price">₹15,000 <span>incl. taxes</span></div>
+      <div class="instructor">
+        <span class="instructor-icon">V</span>
+        <span><strong>Vigneshwaran</strong> B.E (CSE)</span>
+      </div>
+      <div class="company-exp">
+        📍 Ex-Software Developer @ Fleksa & Nura E mobility<br>
+        💡 7+ years industry & mentoring experience
+      </div>
+      <div class="instructor" style="border-top: none; padding-top: 0;">
+        <span>🤝 Co-instructor:</span>
+        <span><strong>Santhosh</strong> (TCS, Senior Analyst)</span>
+      </div>
+      <div class="company-exp">
+        ✅ MERN Stack • Python • DevOps basics • Real-world capstone
+      </div>
+      <a href="#" class="enroll-btn">Enroll Now →</a>
+    </div>
+
+    <!-- Data Analytics Course Card -->
+    <div class="course-card">
+      <div class="course-badge">📊 Data Science Track</div>
+      <h3>Data Analytics Course</h3>
+      <div class="price">₹15,000 <span>incl. taxes</span></div>
+      <div class="instructor">
+        <span class="instructor-icon">V</span>
+        <span><strong>Vigneshwaran</strong> B.E (CSE)</span>
+      </div>
+      <div class="company-exp">
+        📍 Ex-Software Developer (Fleksa, Nura E mobility) & Analytics Expert<br>
+        💡 Specializes in Python, SQL, Power BI, Stats
+      </div>
+      <div class="instructor" style="border-top: none; padding-top: 0;">
+        <span>🤝 Co-instructor:</span>
+        <span><strong>Santhosh</strong> @ TCS (Data & BI specialist)</span>
+      </div>
+      <div class="company-exp">
+        ✅ Pandas, Tableau, EDA, Real-world business cases
+      </div>
+      <a href="#" class="enroll-btn">Enroll Now →</a>
+    </div>
+  </div>
+</div>
+
+<!-- Home About & Instructor Highlights (integrated with Vicky Technology & team) -->
+<div class="container" id="about-section">
+  <div class="about-instructor">
+    <div class="about-grid">
+      <div class="about-text">
+        <h2>👨‍🏫 Meet your mentors & <span style="color:#1e4a76;">Vicky Technology</span> story</h2>
+        <p><strong class="highlight-name">Vigneshwaran B.E (CSE)</strong> — Former Software Developer at <strong>Fleksa</strong> and <strong>Nura E mobility</strong>, brings deep industry experience in full-stack systems and data-driven solutions. With a passion for teaching, Vignesh has trained 500+ students landing jobs in startups & MNCs.</p>
+        <p><strong class="highlight-name">Santhosh</strong> — currently works at <strong>TCS</strong> as a Senior System Engineer, specializing in data pipelines and analytics. Together they bring a unique blend of development & data analytics expertise.</p>
+        <p>🔹 <strong>Vicky Technology</strong> was founded with a mission: “affordable, outcome-based tech education with personalized mentorship”. Both Full-Stack and Data Analytics courses are priced at <strong>₹15,000</strong> (all-inclusive) to ensure accessibility without compromising quality.</p>
+        <ul class="ex-list">
+          <li>✅ 100+ hours of hands-on learning</li>
+          <li>✅ Industry projects & mock interviews</li>
+          <li>✅ Lifetime access & community support</li>
+        </ul>
+      </div>
+      <div class="instructor-photo">
+        <div class="avatar-icon">👨‍💻📊</div>
+        <p style="font-weight: 600; margin-top: 10px;">Vigneshwaran + Santhosh</p>
+        <p style="font-size: 0.85rem;">Lead Instructors @ Vicky Tech</p>
+        <div class="badge-tag">Ex-Fleksa | Ex-Nura | TCS</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- additional home about section that talks about Vicky Technology values -->
+<div class="container">
+  <div class="home-about">
+    <h3>🌟 Why Vicky Technology ?</h3>
+    <p style="max-width: 700px; margin: 0.5rem auto;">We bridge the gap between academic knowledge and real-world demands. Our platform offers structured curriculum, 1:1 career guidance, and courses taught by practitioners currently shaping the tech landscape. Whether you aim to become a full-stack developer or a data analyst — we provide the rocket fuel.</p>
+    <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 1.5rem;">
+      <div><strong>🏆 92%</strong><br>placement assistance success</div>
+      <div><strong>👥 6:1</strong><br>student-mentor ratio</div>
+      <div><strong>📅 2 Live projects</strong><br>per course</div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer Section -->
+<footer class="footer" id="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h3>Vicky Technology</h3>
+        <p>Empowering tech careers through expert-led affordable courses. Full-Stack & Data Analytics at ₹15,000.</p>
+        <p style="margin-top: 10px;">📍 Online & Live sessions</p>
+      </div>
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <p><a href="#">Home</a></p>
+        <p><a href="#courses">Courses</a></p>
+        <p><a href="#about-section">About Instructors</a></p>
+        <p><a href="#">Refund Policy</a></p>
+      </div>
+      <div class="footer-col">
+        <h3>Contact & Support</h3>
+        <p>✉️ hello@vickytechnology.com</p>
+        <p>📞 +91 98765 43210</p>
+        <p>💬 Live chat (Mon-Sat, 10AM-7PM)</p>
+      </div>
+      <div class="footer-col">
+        <h3>Follow Us</h3>
+        <p>LinkedIn | Instagram | Twitter</p>
+        <p style="margin-top: 1rem;">© 2025 — Built with 💙 for learners</p>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>© 2025 Vicky Technology — All rights reserved. Courses: Full-Stack & Data Analytics (₹15,000 each) | Lead instructor: Vigneshwaran B.E(CSE) ex: Fleksa, Nura E mobility | Co-instructor: Santhosh @ TCS</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
